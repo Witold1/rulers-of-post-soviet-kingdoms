@@ -1,13 +1,10 @@
 /**
  * Light / dark themes — Economist-inspired editorial tokens.
- * Respects saved preference, then system setting.
+ * Default dark; respects a saved preference when set.
  */
 (function () {
   const STORAGE_KEY = "timeline-theme";
-
-  function systemTheme() {
-    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-  }
+  const DEFAULT_THEME = "dark";
 
   function getStoredTheme() {
     try {
@@ -20,7 +17,7 @@
   }
 
   function getTheme() {
-    return getStoredTheme() || systemTheme();
+    return getStoredTheme() || DEFAULT_THEME;
   }
 
   function applyTheme(theme) {
@@ -51,10 +48,6 @@
       btn.addEventListener("click", () => {
         setTheme(btn.dataset.themeBtn);
       });
-    });
-
-    window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => {
-      if (!getStoredTheme()) applyTheme(systemTheme());
     });
   }
 

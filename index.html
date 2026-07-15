@@ -9,12 +9,7 @@
     (function () {
       try {
         var stored = localStorage.getItem("timeline-theme");
-        var theme =
-          stored === "light" || stored === "dark"
-            ? stored
-            : window.matchMedia("(prefers-color-scheme: light)").matches
-              ? "light"
-              : "dark";
+        var theme = stored === "light" || stored === "dark" ? stored : "dark";
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
       } catch (e) {
