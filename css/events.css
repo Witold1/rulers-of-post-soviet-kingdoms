@@ -1,0 +1,211 @@
+/**
+ * Optional unrest / events layer — patterned strips below ruler bars.
+ * Omit this file (and js/events.js) for rulers-only timeline.
+ */
+
+html.events-enabled {
+  --event-war-fill: #4a1814;
+  --event-war-stripe: #c92820;
+  --event-war-edge: #e3120b;
+
+  --event-revolution-fill: #3d2618;
+  --event-revolution-stripe: #d48040;
+  --event-revolution-edge: #e89450;
+
+  --event-protest-fill: #3a2a14;
+  --event-protest-stripe: #d4a038;
+  --event-protest-edge: #e8b848;
+
+  --event-crisis-fill: #2e2440;
+  --event-crisis-edge: #a888d8;
+
+  --event-unrest-fill: #362820;
+  --event-unrest-stripe: #c09070;
+  --event-unrest-edge: #d4a080;
+
+  --event-crisis-inset: rgba(168, 136, 216, 0.22);
+  --event-crisis-pattern: rgba(168, 136, 216, 0.12);
+  --event-crisis-swatch-inset: rgba(168, 136, 216, 0.15);
+
+  --event-gap: 2px;
+  --event-height: 12px;
+  --row-h: 60px;
+}
+
+html[data-theme="light"].events-enabled {
+  --event-war-fill: #fae8e6;
+  --event-war-stripe: #e3120b;
+  --event-war-edge: #c4100a;
+
+  --event-revolution-fill: #f8ece0;
+  --event-revolution-stripe: #c46830;
+  --event-revolution-edge: #a85620;
+
+  --event-protest-fill: #f8f0dc;
+  --event-protest-stripe: #b88620;
+  --event-protest-edge: #9a7018;
+
+  --event-crisis-fill: #eee8f8;
+  --event-crisis-edge: #6b4fa8;
+
+  --event-unrest-fill: #f2e8e0;
+  --event-unrest-stripe: #a07050;
+  --event-unrest-edge: #8a6044;
+
+  --event-crisis-inset: rgba(107, 79, 168, 0.28);
+  --event-crisis-pattern: rgba(107, 79, 168, 0.14);
+  --event-crisis-swatch-inset: rgba(107, 79, 168, 0.18);
+}
+
+/* Layer UI — tied to html.events-enabled */
+#legend-events,
+#events-chart-note {
+  display: none !important;
+}
+
+html.events-enabled #legend-events {
+  display: flex !important;
+}
+
+html.events-enabled #events-chart-note {
+  display: block !important;
+}
+
+/* Event fills — shared by legend swatches & chart bars */
+.bar.event-strip.war,
+.swatch.war {
+  --event-edge: var(--event-war-edge);
+  background-color: var(--event-war-fill);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--event-war-fill) 0 4px,
+    var(--event-war-stripe) 4px 5px
+  );
+}
+
+.bar.event-strip.revolution,
+.swatch.revolution {
+  --event-edge: var(--event-revolution-edge);
+  background-color: var(--event-revolution-fill);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--event-revolution-fill) 0 3px,
+    var(--event-revolution-stripe) 3px 4px
+  );
+}
+
+.bar.event-strip.protest,
+.swatch.protest {
+  --event-edge: var(--event-protest-edge);
+  background-color: var(--event-protest-fill);
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--event-protest-fill) 0 3px,
+    var(--event-protest-stripe) 3px 4px
+  );
+}
+
+.bar.event-strip.crisis,
+.swatch.crisis {
+  --event-edge: var(--event-crisis-edge);
+  background-color: var(--event-crisis-fill);
+  background-image: none;
+}
+
+.bar.event-strip.regional,
+.swatch.regional {
+  --event-edge: var(--event-unrest-edge);
+  background-color: var(--event-unrest-fill);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--event-unrest-fill) 0 4px,
+    var(--event-unrest-stripe) 4px 5px
+  );
+}
+
+.swatch.war,
+.swatch.revolution,
+.swatch.protest,
+.swatch.regional {
+  border-top: 2px solid var(--event-edge);
+}
+
+.swatch.crisis {
+  border: 1px dashed var(--event-crisis-edge);
+  box-shadow: inset 0 0 0 1px var(--event-crisis-swatch-inset);
+}
+
+.swatch.war,
+.swatch.revolution,
+.swatch.protest,
+.swatch.crisis,
+.swatch.regional {
+  width: 24px;
+  height: 12px;
+  border-radius: 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.bar.event-strip {
+  top: calc(var(--ruler-top) + var(--ruler-height) + var(--event-gap));
+  bottom: auto;
+  height: var(--event-height);
+  border: none;
+  border-radius: 0;
+  z-index: 4;
+  box-sizing: border-box;
+  background-repeat: repeat;
+  background-origin: padding-box;
+  background-clip: padding-box;
+  box-shadow: inset 0 2px 0 0 var(--event-edge);
+}
+
+.bar.event-strip.crisis {
+  box-shadow:
+    inset 0 2px 0 0 var(--event-edge),
+    inset 0 0 0 1px var(--event-crisis-inset);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 4px,
+    var(--event-crisis-pattern) 4px 5px
+  );
+}
+
+.bar.event-strip.event-point {
+  min-width: 6px;
+}
+
+.bar.event-strip:hover {
+  filter: brightness(1.15) saturate(1.1);
+  z-index: 5;
+}
+
+.bar.event-strip.focused {
+  filter: brightness(1.2) saturate(1.15);
+  opacity: 1;
+  z-index: 6;
+  box-shadow:
+    0 0 0 1.5px var(--bg),
+    0 0 0 3px var(--accent);
+}
+
+.events-chart-note {
+  margin: 0.65rem 0 0;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Export: note is interactive-only (“hover for detail”) — hide even when layer is on */
+body.is-exporting #events-chart-note {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  html.events-enabled {
+    --event-gap: 2px;
+    --event-height: 10px;
+    --row-h: 48px;
+  }
+}

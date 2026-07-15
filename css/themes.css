@@ -1,0 +1,133 @@
+/* Shared layout & typography tokens */
+:root {
+  --accent: #e3120b;
+  --dissolution: #e3120b;
+
+  --font: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-chart: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --row-h: 48px;
+  --label-w: 132px;
+  --year-w: 44px;
+  --radius: 2px;
+
+  --ruler-top: 14px;
+  --ruler-height: 26px;
+
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+
+  /* Page chrome typography (title, subtitle, legend, footer) */
+  --type-title-size: 2.375rem;
+  --type-lead-size: 0.8125rem;
+  --type-label-size: 0.625rem;
+  --type-title-tracking: -0.015em;
+  --type-body-tracking: 0.01em;
+  --type-label-tracking: 0.08em;
+}
+
+/* Dark — editorial chart panel (default) */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #121316;
+  --chart-bg: #181a1f;
+  --chart-bg-alt: #1e2128;
+  --surface: #1c1f24;
+  --surface-2: #252930;
+  --border: #353a44;
+  --border-light: #434956;
+  --text: #f4f2ec;
+  --text-secondary: #c8c4bb;
+  --text-muted: #9a9690;
+
+  --independence: #d4af37;
+  --independence-halo: rgba(212, 175, 55, 0.35);
+  --sovereignty: #7a94ad;
+  --sovereignty-halo: rgba(122, 148, 173, 0.35);
+
+  --year-line: rgba(244, 242, 236, 0.055);
+  --year-line-major: rgba(244, 242, 236, 0.2);
+  --year-line-decade: rgba(244, 242, 236, 0.32);
+  --year-line-minor: rgba(244, 242, 236, 0.09);
+
+  --region-slavic: #a9756c;
+  --region-baltic: #6f91b3;
+  --region-transcaucasus: #b28d52;
+  --region-central-asia: #5f9a7d;
+
+  --row-alt: rgba(255, 255, 255, 0.022);
+  --label-shadow: 8px 0 12px -8px rgba(0, 0, 0, 0.55);
+  --bar-border: rgba(0, 0, 0, 0.22);
+  --bar-hover-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --tooltip-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  --dissolution-opacity: 0.5;
+
+  --input-bg: #14161a;
+
+  --palette-1: #b86b5c;
+  --palette-2: #b8923a;
+  --palette-3: #c8baa0;
+  --palette-4: #4d8f62;
+  --palette-5: #4f7f9c;
+  --palette-6: #8f8f8a;
+  --palette-stripe: rgba(0, 0, 0, 0.07);
+  --label-scrim-light-fg: #1c1c1a;
+  --label-scrim-light-bg: rgba(252, 251, 248, 0.94);
+  --label-scrim-dark-fg: #f4f2ec;
+  --label-scrim-dark-bg: rgba(18, 19, 22, 0.88);
+}
+
+/* Light — Economist paper & ink */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f4f1ea;
+  --chart-bg: #fffcf7;
+  --chart-bg-alt: #f7f4ed;
+  --surface: #fffcf7;
+  --surface-2: #ebe6dc;
+  --border: #d4cfc4;
+  --border-light: #c4bfb4;
+  --text: #1c1c1a;
+  --text-secondary: #3d3a36;
+  --text-muted: #5c5852;
+
+  --independence: #8f6f1a;
+  --independence-halo: rgba(143, 111, 26, 0.28);
+  --sovereignty: #4f6d85;
+  --sovereignty-halo: rgba(79, 109, 133, 0.28);
+
+  --year-line: rgba(28, 28, 26, 0.06);
+  --year-line-major: rgba(28, 28, 26, 0.2);
+  --year-line-decade: rgba(28, 28, 26, 0.32);
+  --year-line-minor: rgba(28, 28, 26, 0.1);
+
+  --region-slavic: #8f5147;
+  --region-baltic: #376b8a;
+  --region-transcaucasus: #8b671f;
+  --region-central-asia: #347154;
+
+  --row-alt: rgba(28, 28, 26, 0.028);
+  --label-shadow: 8px 0 12px -8px rgba(28, 28, 26, 0.12);
+  --bar-border: rgba(28, 28, 26, 0.14);
+  --bar-hover-shadow: 0 2px 8px rgba(28, 28, 26, 0.14);
+  --tooltip-shadow: 0 6px 24px rgba(28, 28, 26, 0.12);
+  --dissolution-opacity: 0.62;
+
+  --input-bg: #ffffff;
+
+  --palette-1: #9e5849;
+  --palette-2: #9a7428;
+  --palette-3: #8a7d62;
+  --palette-4: #3d7a52;
+  --palette-5: #3d6f8a;
+  --palette-6: #6f6f6a;
+  --palette-stripe: rgba(255, 255, 255, 0.22);
+  --label-scrim-light-fg: #1c1c1a;
+  --label-scrim-light-bg: rgba(255, 252, 247, 0.96);
+  --label-scrim-dark-fg: #f4f2ec;
+  --label-scrim-dark-bg: rgba(28, 28, 26, 0.88);
+}
